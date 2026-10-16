@@ -4,7 +4,9 @@ Use Reachy Mini's USB microphone and speaker with an existing Nemotron Voice Age
 
 The path is Reachy microphone → host `arecord` → gateway → automatic speech recognition (ASR) → large language model (LLM) → text-to-speech (TTS) → host `aplay` → Reachy speaker. The gateway reuses your deployment's models; the client downloads no models and starts no inference service.
 
-The client uses robot audio by default and can optionally turn its head toward detected speech. It does not use the camera or change OpenShell policies. It uses the Generic Assistant without tools and supplies a short Reachy persona for the session.
+The client uses robot audio by default and can optionally turn its head toward detected speech. It does not use the camera or change OpenShell policies. By default, it uses the Generic Assistant without tools and supplies a short Reachy persona for the session.
+
+To select a catalog persona and its tools, pass `--prompt-key enterprise_helpdesk`. Refer to the [Enterprise Help-Desk Demo](use-enterprise-helpdesk.md) for synthetic ticket lookup.
 
 ## Prepare the Thor
 

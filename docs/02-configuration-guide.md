@@ -24,6 +24,7 @@ What ASR / LLM / TTS models are available, their VRAM, precision, and known issu
 | [Enable the Audio Recorder](how-to/enable-audio-recorder.md) | Capture raw ASR/TTS audio per turn for debugging |
 | [Use the Realtime Gateway](how-to/use-realtime-gateway.md) | OpenAI Realtime–compatible `WS /v1/realtime` for external clients |
 | [Use Reachy Mini for Voice Audio](how-to/use-reachy-audio.md) | Use the robot's USB microphone and speaker with the existing Thor deployment |
+| [Use the Enterprise Help-Desk Demo](how-to/use-enterprise-helpdesk.md) | Select a fictional enterprise persona and inspect a read-only ticket lookup tool |
 
 ## Welcome Message
 

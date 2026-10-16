@@ -1,3 +1,22 @@
+lookup_ticket:
+  type: function
+  function:
+    name: lookup_ticket
+    description: >-
+      Read the status, support team, latest update, next step, and resolution
+      of one fictional Northstar IT ticket. This is synthetic training data,
+      not a live enterprise system. Use for ticket questions and follow-ups.
+      Ask for the ticket number if none is known. This tool cannot change tickets.
+    parameters:
+      type: object
+      properties:
+        ticket_id:
+          type: string
+          description: "Ticket ID, for example IT-1001. Convert spoken digits to numbers."
+      required:
+        - ticket_id
+      additionalProperties: false
+
 convert_currency:
   type: function
   function:

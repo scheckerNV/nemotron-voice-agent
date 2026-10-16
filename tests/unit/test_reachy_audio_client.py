@@ -17,6 +17,17 @@ client = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(client)
 
 
+def test_server_persona_selection_does_not_override_its_instructions():
+    """A server-side enterprise prompt must keep its persona and tool allowlist."""
+    session = client.build_session_config("enterprise_helpdesk")
+    assert session["prompt"] == {"id": "enterprise_helpdesk"}
+    assert "instructions" not in session
+    assert session["nvidia"]["pipeline_mode"] == "generic-assistant"
+    default = client.build_session_config()
+    assert "Reachy" in default["instructions"]
+    assert "prompt" not in default
+
+
 @pytest.mark.parametrize("speaking", [False, True])
 @pytest.mark.parametrize("interruptions", [False, True])
 def test_capture_sends_silence_only_during_playback(monkeypatch, speaking, interruptions):

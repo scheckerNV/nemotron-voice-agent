@@ -27,6 +27,8 @@ import httpx
 from loguru import logger
 from pipecat.services.llm_service import FunctionCallParams
 
+from examples.generic.ticket_lookup import lookup_ticket
+
 # ---------------------------------------------------------------------------
 # Currency conversion
 # ---------------------------------------------------------------------------
@@ -525,7 +527,16 @@ async def handle_get_news_headlines(params: FunctionCallParams) -> None:
 # Registry
 # ---------------------------------------------------------------------------
 
+
+async def handle_lookup_ticket(params: FunctionCallParams) -> None:
+    """Return a fictional help-desk ticket through the existing tool callback."""
+    result = lookup_ticket((params.arguments or {}).get("ticket_id"))
+    logger.info("lookup_ticket completed: {}", result.get("error", "found"))
+    await params.result_callback(result)
+
+
 TOOL_HANDLERS = {
+    "lookup_ticket": handle_lookup_ticket,
     "convert_currency": handle_convert_currency,
     "calculate_bmi": handle_calculate_bmi,
     "get_current_date_time": handle_get_current_date_time,

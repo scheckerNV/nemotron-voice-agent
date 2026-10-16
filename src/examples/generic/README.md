@@ -70,6 +70,8 @@ To run host-native without Docker, set `selection: generic-assistant` in [`examp
 
 ## Customization
 
+For a complete persona and tool example, use the [Enterprise Help-Desk Demo](../../../docs/how-to/use-enterprise-helpdesk.md). Select `enterprise_helpdesk` to enable the fictional Northstar assistant and its read-only `lookup_ticket` tool; existing defaults remain unchanged.
+
 | Path | Role |
 | --- | --- |
 | `pipeline.py` | Pipecat entry point for the generic example |
@@ -77,6 +79,7 @@ To run host-native without Docker, set `selection: generic-assistant` in [`examp
 | `tools.yaml` | OpenAI function-calling schemas, keyed by tool name |
 | `tool_handlers.py` | async handlers for each schema in `tools.yaml`, exposed through the `TOOL_HANDLERS` registry |
 | `tools.py` | builds a filtered `ToolsSchema` from `tools.yaml` for the tool names a prompt requests, skipping entries without a matching handler |
+| `ticket_lookup.py`, `ticket_fixtures.json` | Read-only lookup of fictional Northstar help-desk records |
 | `services.cloud.yaml`, `services.local.yaml` | example-local service catalogs |
 
 To change models, voices, prompts, or tool wiring, see [Configure Services](../../../docs/how-to/configure-services.md), [Configure LLM](../../../docs/how-to/configure-llm.md), [Configure ASR](../../../docs/how-to/configure-asr.md), [Configure TTS](../../../docs/how-to/configure-tts.md), and [Configure Prompts](../../../docs/how-to/configure-prompts.md).

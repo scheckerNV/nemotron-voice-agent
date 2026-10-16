@@ -42,6 +42,7 @@ class PromptCatalogTests(unittest.TestCase):
                 "flowershop",
                 "generic_assistant",
                 "generic_assistant_without_tools",
+                "enterprise_helpdesk",
             },
             PROJECT_ROOT / "src/examples/multilingual/prompts.yaml": {
                 "fixed_session_language_addon",

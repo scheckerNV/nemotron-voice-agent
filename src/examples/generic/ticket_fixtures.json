@@ -1,0 +1,35 @@
+{
+  "_metadata": {
+    "source": "Fictional records authored for the Northstar IT help-desk training example. No real enterprise data.",
+    "license": "Apache-2.0"
+  },
+  "tickets": {
+    "IT-1001": {
+      "title": "VPN disconnects during video calls",
+      "status": "Investigating",
+      "priority": "High",
+      "assigned_team": "Network Support",
+      "latest_update": "Network Support reproduced the disconnect and is reviewing VPN gateway logs.",
+      "next_step": "Network Support will post an update after reviewing the logs.",
+      "resolution": null
+    },
+    "IT-1002": {
+      "title": "Laptop cannot connect to the office display",
+      "status": "Resolved",
+      "priority": "Normal",
+      "assigned_team": "Workplace IT",
+      "latest_update": "Workplace IT replaced the faulty display adapter and verified the connection.",
+      "next_step": "No further action is required unless the display problem returns.",
+      "resolution": "Replaced the faulty display adapter."
+    },
+    "IT-1003": {
+      "title": "Access to the analytics workspace",
+      "status": "Waiting for approval",
+      "priority": "Normal",
+      "assigned_team": "Identity and Access",
+      "latest_update": "The access request is waiting for the workspace owner's approval.",
+      "next_step": "The workspace owner needs to approve the request before Identity and Access can grant access.",
+      "resolution": null
+    }
+  }
+}

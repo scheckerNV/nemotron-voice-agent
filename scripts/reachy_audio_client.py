@@ -299,6 +299,25 @@ class RobotAudio:
         self.recorder = self.player = None
 
 
+def build_session_config(prompt_key: str = "") -> dict:
+    """Select a server-side persona and its tools, or keep the default Reachy persona."""
+    session = {
+        "type": "realtime",
+        "voice": "John",
+        "max_output_tokens": 128,
+        "audio": {
+            "input": {"format": {"type": "audio/pcm", "rate": RATE}, "turn_detection": {"type": "server_vad"}},
+            "output": {"format": {"type": "audio/pcm", "rate": RATE}},
+        },
+        "nvidia": {"pipeline_mode": "generic-assistant"},
+    }
+    if prompt_key:
+        session["prompt"] = {"id": prompt_key}
+    else:
+        session["instructions"] = "You are Reachy, a friendly voice assistant. Reply in one short sentence."
+    return session
+
+
 async def run(args: argparse.Namespace) -> None:
     """Configure the existing gateway, then stream robot audio both ways."""
     task = asyncio.current_task()
@@ -324,20 +343,7 @@ async def run(args: argparse.Namespace) -> None:
                 json.dumps(
                     {
                         "type": "session.update",
-                        "session": {
-                            "type": "realtime",
-                            "instructions": "You are Reachy, a friendly voice assistant. Reply in one short sentence.",
-                            "voice": "John",
-                            "max_output_tokens": 128,
-                            "audio": {
-                                "input": {
-                                    "format": {"type": "audio/pcm", "rate": RATE},
-                                    "turn_detection": {"type": "server_vad"},
-                                },
-                                "output": {"format": {"type": "audio/pcm", "rate": RATE}},
-                            },
-                            "nvidia": {"pipeline_mode": "generic-assistant"},
-                        },
+                        "session": build_session_config(args.prompt_key),
                     }
                 )
             )
@@ -374,6 +380,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--url", default="wss://127.0.0.1:7860/v1/realtime")
     parser.add_argument("--device", default="plughw:CARD=Audio,DEV=0")
+    parser.add_argument("--prompt-key", default="", help="Use a server-side Generic Assistant prompt and its tools")
     parser.add_argument(
         "--insecure", action="store_true", help="Accept the local demo server's self-signed certificate"
     )
