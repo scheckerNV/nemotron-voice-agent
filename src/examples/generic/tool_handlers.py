@@ -27,6 +27,7 @@ import httpx
 from loguru import logger
 from pipecat.services.llm_service import FunctionCallParams
 
+from examples.generic.destination_lookup import find_destinations
 from examples.generic.ticket_lookup import lookup_ticket
 
 # ---------------------------------------------------------------------------
@@ -535,7 +536,16 @@ async def handle_lookup_ticket(params: FunctionCallParams) -> None:
     await params.result_callback(result)
 
 
+async def handle_find_destinations(params: FunctionCallParams) -> None:
+    """Search the local demo catalog and return the result to the model."""
+    args = params.arguments or {}
+    result = find_destinations(args.get("category"), args.get("max_distance_km"))
+    logger.info("find_destinations completed: {}", result.get("error", "ok"))
+    await params.result_callback(result)
+
+
 TOOL_HANDLERS = {
+    "find_destinations": handle_find_destinations,
     "lookup_ticket": handle_lookup_ticket,
     "convert_currency": handle_convert_currency,
     "calculate_bmi": handle_calculate_bmi,

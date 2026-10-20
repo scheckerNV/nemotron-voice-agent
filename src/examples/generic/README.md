@@ -70,7 +70,9 @@ To run host-native without Docker, set `selection: generic-assistant` in [`examp
 
 ## Customization
 
-For a complete persona and tool example, use the [Enterprise Help-Desk Demo](../../../docs/how-to/use-enterprise-helpdesk.md). Select `enterprise_helpdesk` to enable the fictional Northstar assistant and its read-only `lookup_ticket` tool; existing defaults remain unchanged.
+For a persona and tool walkthrough, use the [Car Destination-Finder Demo](../../../docs/how-to/use-car-assistant.md). Select `car_assistant` to enable Dash and `find_destinations`, which filters a fictional fixed-origin snapshot by category and distance. Existing models, recipe profiles, and defaults remain unchanged.
+
+The legacy [Enterprise Help-Desk Demo](../../../docs/how-to/use-enterprise-helpdesk.md) remains available as `enterprise_helpdesk` with its read-only `lookup_ticket` tool.
 
 | Path | Role |
 | --- | --- |
@@ -79,6 +81,7 @@ For a complete persona and tool example, use the [Enterprise Help-Desk Demo](../
 | `tools.yaml` | OpenAI function-calling schemas, keyed by tool name |
 | `tool_handlers.py` | async handlers for each schema in `tools.yaml`, exposed through the `TOOL_HANDLERS` registry |
 | `tools.py` | builds a filtered `ToolsSchema` from `tools.yaml` for the tool names a prompt requests, skipping entries without a matching handler |
+| `destination_lookup.py`, `destination_fixtures.json` | Read-only fictional destination search from a fixed demo origin |
 | `ticket_lookup.py`, `ticket_fixtures.json` | Read-only lookup of fictional Northstar help-desk records |
 | `services.cloud.yaml`, `services.local.yaml` | example-local service catalogs |
 

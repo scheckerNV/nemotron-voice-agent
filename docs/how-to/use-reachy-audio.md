@@ -6,7 +6,7 @@ The path is Reachy microphone → host `arecord` → gateway → automatic speec
 
 The client uses robot audio by default and can optionally turn its head toward detected speech. It does not use the camera or change OpenShell policies. By default, it uses the Generic Assistant without tools and supplies a short Reachy persona for the session.
 
-To select a catalog persona and its tools, pass `--prompt-key enterprise_helpdesk`. Refer to the [Enterprise Help-Desk Demo](use-enterprise-helpdesk.md) for synthetic ticket lookup.
+To select Dash's catalog persona and tools, pass `--prompt-key car_assistant`. Refer to the [Car Destination-Finder Demo](use-car-assistant.md) for fictional destination lookup. The legacy [Nova example](use-enterprise-helpdesk.md) remains selectable with `--prompt-key enterprise_helpdesk`.
 
 ## Prepare the Thor
 

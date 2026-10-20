@@ -18,7 +18,8 @@ Prompt presets are defined per example. The Generic Cascaded example currently p
 |------------|-------------|
 | `generic_assistant` | Generic voice assistant with tool support and a single-sentence response format. |
 | `generic_assistant_without_tools` | Generic voice assistant without tool access and with a single-sentence response format. |
-| `enterprise_helpdesk` | Nova, the fictional Northstar IT assistant, with a read-only synthetic ticket lookup. Refer to the [Enterprise Help-Desk Demo](use-enterprise-helpdesk.md). |
+| `car_assistant` | Dash, an in-car demo assistant with fixed-origin fictional destination lookup. Refer to the [Car Destination-Finder Demo](use-car-assistant.md). |
+| `enterprise_helpdesk` | Legacy Nova help-desk example with read-only fictional ticket lookup. Refer to the [Enterprise Help-Desk Demo](use-enterprise-helpdesk.md). |
 | `flowershop` | Flora persona for the GreenForce Garden flower-shop scenario with strict flow rules. |
 
 ## Changing the Default Prompt

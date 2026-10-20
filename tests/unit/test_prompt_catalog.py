@@ -43,6 +43,7 @@ class PromptCatalogTests(unittest.TestCase):
                 "generic_assistant",
                 "generic_assistant_without_tools",
                 "enterprise_helpdesk",
+                "car_assistant",
             },
             PROJECT_ROOT / "src/examples/multilingual/prompts.yaml": {
                 "fixed_session_language_addon",

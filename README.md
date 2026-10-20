@@ -188,7 +188,8 @@ npx skills add .
 | How-to | [Troubleshooting](docs/06-troubleshooting.md) | Startup & deployment known issues |
 | How-to | [Realtime Gateway](docs/how-to/use-realtime-gateway.md) | OpenAI Realtime–compatible `WS /v1/realtime`: how it works and how to connect |
 | How-to | [Reachy Mini Audio](docs/how-to/use-reachy-audio.md) | Connect the robot's USB microphone and speaker to the existing voice pipeline |
-| How-to | [Enterprise Help-Desk Demo](docs/how-to/use-enterprise-helpdesk.md) | Fictional Northstar persona with read-only synthetic ticket lookup |
+| How-to | [Car Destination-Finder Demo](docs/how-to/use-car-assistant.md) | Dash persona with fixed-origin fictional charging, fuel, and parking searches |
+| How-to | [Enterprise Help-Desk Demo](docs/how-to/use-enterprise-helpdesk.md) | Legacy Nova example with read-only synthetic ticket lookup |
 
 Step-by-step **how-to guides** are indexed in the [Configuration Guide](docs/02-configuration-guide.md). They cover configuring .env, models, and prompts, enabling opentelemetry tracing, a TURN Server, and the audio recorder for debugging, plus the Realtime integrator gateway.
 

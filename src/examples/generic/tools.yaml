@@ -1,3 +1,24 @@
+find_destinations:
+  type: function
+  function:
+    name: find_destinations
+    description: >-
+      Search a fictional local destination catalog by category and optional maximum distance.
+      Distances are fixed from Demo Junction. No live location, routing, traffic, or availability is provided.
+    parameters:
+      type: object
+      properties:
+        category:
+          type: string
+          enum: [charging, fuel, parking]
+          description: Destination category. Ask the caller when it is missing or unclear.
+        max_distance_km:
+          type: number
+          exclusiveMinimum: 0
+          description: Optional positive maximum distance in kilometers from the fixed demo origin.
+      required: [category]
+      additionalProperties: false
+
 lookup_ticket:
   type: function
   function:

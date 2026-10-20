@@ -1,0 +1,14 @@
+{
+  "_metadata": {
+    "source": "Fictional destinations authored for the edge voice-agent training example. Distances are fixed demo values, not GPS or routing results.",
+    "license": "Apache-2.0"
+  },
+  "origin": "Demo Junction",
+  "destinations": [
+    {"name": "Ridge Charge", "category": "charging", "distance_km": 4.8},
+    {"name": "Market Parking", "category": "parking", "distance_km": 0.7},
+    {"name": "Harbor Charge", "category": "charging", "distance_km": 1.2},
+    {"name": "Corner Fuel", "category": "fuel", "distance_km": 2.0},
+    {"name": "Museum Parking", "category": "parking", "distance_km": 3.5}
+  ]
+}
