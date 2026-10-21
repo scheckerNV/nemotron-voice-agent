@@ -4,6 +4,22 @@ Select `car_assistant` in the Generic Assistant to speak with Dash. Its `find_de
 
 This is a local snapshot, not your GPS location or a navigation service. Dash cannot control a vehicle, reserve parking, or check live traffic, opening hours, or charger availability. It reuses your existing speech recognition, large language model (LLM), and speech synthesis services without another server, model, or API key.
 
+## Follow the Browser Audio Path
+
+This diagram shows the local Thor browser path using WebRTC. The microphone and speaker are on your laptop; the models run on Thor. Speech-to-text (STT) recognizes speech, and text-to-speech (TTS) generates reply audio.
+
+```mermaid
+flowchart LR
+    mic["Microphone<br/>Capture your voice"] --> uplink["WebRTC Uplink<br/>Send audio to Thor"]
+    uplink --> stt["Speech Recognition: NeMo Speech STT<br/>Turn speech into text"]
+    stt --> llm["LLM: Nemotron 3.5 Lightning<br/>Choose tools or answer"]
+    llm --> tts["Speech Synthesis: Magpie TTS<br/>Turn reply into audio"]
+    tts --> downlink["WebRTC Downlink<br/>Return audio to laptop"]
+    downlink --> speaker["Speaker<br/>Play the reply"]
+```
+
+Pipecat coordinates the transport, models, conversation state, and tool execution as one voice-agent pipeline.
+
 ## Select Dash
 
 Start the [Generic Assistant](../../src/examples/generic/README.md) with your existing deployment recipe. On Thor, keep `generic-assistant/single-gpu` and any existing Compose overrides.
@@ -33,6 +49,19 @@ Start a new session to test a missing category. “Find somewhere nearby” shou
 The prompt requires lookup for new searches, changed requirements, and explicit refreshes. Unchanged follow-up details can use the latest actual tool result. Model adherence is not guaranteed: inspect the executed call and the spoken facts.
 
 ## Inspect the Function and Wiring
+
+The prompt and tool schema configure the LLM. When it requests a lookup, the handler calls Python and returns the function's result:
+
+```mermaid
+flowchart LR
+    prompt["Prompt<br/>Set persona and rules"] --> llm["LLM<br/>Choose tool and arguments"]
+    schema["Tool Schema<br/>Describe allowed tool arguments"] --> llm
+    llm <--> handler["Handler<br/>Call Python; return result"]
+    handler <--> function["Python: find_destinations<br/>Filter and sort destinations"]
+    data["Local JSON Snapshot<br/>Store fictional destination records"] --> function
+```
+
+The Python function reads the JSON snapshot. These are tool dependencies and request/result exchanges, separate from the audio stages above.
 
 The tool runs in the existing Generic Assistant process. These files define it:
 
